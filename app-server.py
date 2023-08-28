@@ -1,5 +1,10 @@
 from flask import Flask, jsonify, request
-from productos import productos
+
+productos = [
+    {"nombre": "laptop", "precio": 500, "cantidad":4},
+    {"nombre": "mouse", "precio": 50, "cantidad":4},
+    {"nombre": "monitor", "precio": 200, "cantidad":7},
+]
 
 app = Flask(__name__)
 
