@@ -1,16 +1,11 @@
-from flask import Flask, jsonify, request
-
-productos = [
-    {"nombre": "laptop", "precio": 500, "cantidad":4},
-    {"nombre": "mouse", "precio": 50, "cantidad":4},
-    {"nombre": "monitor", "precio": 200, "cantidad":7},
-]
+from flask import Flask, jsonify, render_template, request
+from productos import productos
 
 app = Flask(__name__)
 
-@app.route('/saludo')
-def saludo():
-    return jsonify({"mensaje": "Holaa!"})
+@app.route('/')
+def hello():
+    return render_template('index.html')
 
 
 @app.route('/productos')
@@ -33,8 +28,8 @@ def addProducto():
         "precio": request.json['precio'],
         "cantidad": request.json['cantidad']
     }
-    productos.append(new_product)
-    return jsonify({"mensaje": "Producto Agregado Exitosamente", "productos": productos})
+    productos.insert(0,new_product)
+    return jsonify({"mensaje": "Producto Agregado Exitosamente"})
 
 
 @app.route('/productos/<string:nombre_producto>', methods=['PUT'])
@@ -66,5 +61,5 @@ def deleteProducto(nombre_producto):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run()
     

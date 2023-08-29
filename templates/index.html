@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenidos a Nuestra Comunidad</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body onload="get_productos()">
+    <div class="container">
+        <h1>Bienvenidos a Nuestra Comunidad</h1>
+    </div>
+
+    <div class="formulario">
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input name="nombre" id="nombre" type="text" required>
+            <label for="precio">Precio:</label>
+            <input name="precio" id="precio" type="text" required>
+            <label for="cantidad">Cantidad:</label>
+            <input name="cantidad" id="cantidad" type="text" required>
+            <button onclick="add_productos(), get_productos()">Guardar</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+    
+        <tbody id="data">
+        </tbody>
+
+    </table>
+    <script src="static/js/script.js"></script>
+</body>
+</html>
