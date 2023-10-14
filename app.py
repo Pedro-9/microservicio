@@ -1,7 +1,13 @@
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, redirect, url_for
 from productos import productos
 
 app = Flask(__name__)
+
+usuario = {
+    "correo": "administrador@gmail.com",
+    "password": "administrador"
+}
+
 
 @app.route('/')
 def login():
@@ -10,6 +16,18 @@ def login():
 @app.route('/index')
 def listaProductos():
     return render_template('index.html')
+
+
+@app.route('/verificar', methods=['POST'])
+def verificar():
+    if request.method == 'POST':
+        correo = request.form['correo']
+        password = request.form['password']
+        
+        if correo == usuario['correo']  and password == usuario['password']:
+            return redirect(url_for('listaProductos'))
+        else:
+            return redirect(url_for('login'))
 
 @app.route('/productos')
 def getproductos():
