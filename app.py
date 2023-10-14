@@ -4,9 +4,12 @@ from productos import productos
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return render_template('index.html')
+def login():
+    return render_template('login.html')
 
+@app.route('/index')
+def listaProductos():
+    return render_template('index.html')
 
 @app.route('/productos')
 def getproductos():
@@ -61,5 +64,5 @@ def deleteProducto(nombre_producto):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=3000, debug=True)
     
